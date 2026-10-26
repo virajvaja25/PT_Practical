@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using System.Collections;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PT_Practical
@@ -74,7 +74,7 @@ namespace PT_Practical
     //what a class must do but not how it does it
     //it declares only abstract methods
     //all methods in interfce are ,
-        //by default abstract,public,
+    //by default abstract,public,
 
     interface IIest
     {
@@ -85,22 +85,22 @@ namespace PT_Practical
     {
         void CalculateSalary();
     }
-        // Derived Class
-     class RegularEmployee : Emp ,IIest,ICalc
+    // Derived Class
+    class RegularEmployee : Emp, IIest, ICalc
 
     {
 
-       public void Testing()
-        { 
+        public void Testing()
+        {
         }
         public void CalculateSalary()
         {
-            GrossSalary=Basic + HRA + DA;
+            GrossSalary = Basic + HRA + DA;
             NetSalary = GrossSalary - PF + PT;
         }
-       
-            
-        
+
+
+
 
         private double Basic;
         private double HRA;
@@ -170,6 +170,63 @@ namespace PT_Practical
             e2.check();
 
             Console.Read();
+
+            //ArrayList : (Non-generic collection)
+            //allowed to store any type of value
+            //List(Generic Class)
+            //allowed to store only specific type of value
+            ArrayList obj = new ArrayList();
+            obj.Add(10);
+            obj.Add("Hello");
+            obj.Add(20.5);
+            foreach (object str in obj)
+            {
+                Console.WriteLine(str + " ");
+
+                List<string> lst = new List<string>();
+                lst.Add("Ahmedabad");
+                lst.Add("Surat");
+                lst.Add("Vadodara");
+                foreach (object city in lst) // Renamed 'str' to 'city' here
+                {
+                    Console.WriteLine(city + " ");
+                }
+
+                //sortedList : (Non-generic collection & sorted)
+                //key value pair
+                //it sorted vlaue as per the key automatically
+                SortedList sList = new SortedList();
+                sList.Add("25SOECE13079", "Ramesh");
+                sList.Add("25SOECE13080", "Suresh");
+                sList.Add("25SOECE13081", "Mahesh");
+                for (int i = 0; i < sList.Count; i++)
+                {
+                    Console.WriteLine(sList.GetByIndex(i));
+
+                    //HashTable : (Non-generic &non sorted)
+                    //key-value pair
+                    //it does not sort the value as per the key automatically
+                    Hashtable hTable = new Hashtable();
+                    hTable.Add("25SOECE13079", "Ramesh");
+                    hTable.Add("25SOECE13080", 55200);
+                    hTable.Add("25SOECE13081", "Mahesh");
+                    ICollection c = sList.Keys;
+                    foreach (string t in c)
+                    {
+                        Console.WriteLine(t + " " + hTable[t]);
+
+                    }
+                    //Dictionary : (Generic & non sorted)
+                    //key-value pair
+                    //it does not sort the value as per the key automatically
+                    Dictionary<string,RegularEmployee> d = new Dictionary<string, RegularEmployee>();
+
+
+                    d.Add("25SOECE13079", e1);
+                    d.Add("25SOECE13080", (RegularEmployee)e2);
+                    d.Add("25SOECE13081", new RegularEmployee() { Name = "Ramesh", Age = 30, Dept = "IT" });
+                }
+            }
         }
     }
 }
