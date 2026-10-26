@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -26,7 +27,8 @@ namespace PT_Practical
 
     class Program
     {
-        static void Main()
+        // Renamed from Main to Run to avoid multiple entry-point conflict
+        static void Run()
         {
             Dog d = new Dog();
         }

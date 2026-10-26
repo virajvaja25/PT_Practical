@@ -74,26 +74,41 @@ namespace PT_Practical
     //what a class must do but not how it does it
     //it declares only abstract methods
     //all methods in interfce are ,
-        //by default abstract,public,----,
+        //by default abstract,public,
 
     interface IIest
     {
         void Testing();//abstract method
     }
 
+    interface ICalc
+    {
+        void CalculateSalary();
+    }
         // Derived Class
-     class RegularEmployee : Emp ,IIest   
+     class RegularEmployee : Emp ,IIest,ICalc
 
     {
 
        public void Testing()
         { 
         }
+        public void CalculateSalary()
+        {
+            GrossSalary=Basic + HRA + DA;
+            NetSalary = GrossSalary - PF + PT;
+        }
+       
+            
+        
+
         private double Basic;
         private double HRA;
         private double DA;
         private double PF;
         private double PT;
+        private double GrossSalary;
+        private double NetSalary;
 
         // Constructor
         public RegularEmployee()
